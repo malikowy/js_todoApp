@@ -4,37 +4,58 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="pl">
-	<!--<![endif]-->
+<!--<![endif]-->
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Gabriel Ignatiuk - practice page</title>
-		<meta name="author" content="Gabriel Ignatiuk">
-		<meta name="description" content="practice page">
-		<meta name="keywords" content="practice page">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet" />
-		<link href="style.css" rel="stylesheet">
-	</head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Gabriel Ignatiuk - practice page</title>
+    <meta name="author" content="Gabriel Ignatiuk">
+    <meta name="description" content="practice page">
+    <meta name="keywords" content="practice page">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+</head>
 
-	<body>
-		<form>
-			<input class="todo-text" type="text"><button class="add__todo-text" type="button">Add</button></form>
-		</form>
-		<ul class="todo-tasks">
-			<li>Zrób pranie1<a class="doneTask">Done</a><a class="removeTask">X</a></li>
-			<li>Zrób pranie2<a class="doneTask">Done</a><a class="removeTask">X</a></li>
-			<li>Zrób pranie3<a class="doneTask">Done</a><a class="removeTask">X</a></li>
-			<li>Zrób pranie4<a class="doneTask">Done</a><a class="removeTask">X</a></li>
-		</ul>
-		<ul class="done-tasks">
-			<li>Zrób pranie5<a class="redoTask">Do again</a><a class="removeTask">X</a></li>
-			<li>Zrób pranie6<a class="redoTask">Do again</a><a class="removeTask">X</a></li>
-			<li>Zrób pranie7<a class="redoTask">Do again</a><a class="removeTask">X</a></li>
-			<li>Zrób pranie8<a class="redoTask">Do again</a><a class="removeTask">X</a></li>
-		</ul>
-		<script src="app.js"></script>
-	</body>
+<body>
+    <div class="heading">
+        <h1>Add task to do:</h1>
+        <form>
+            <input class="todo-text" type="text"><button type="button" class="addTask" type="button">Add</button></form>
+        </form>
+    </div>
+    <div class="todo">
+        <ul class="todo-tasks">
+            <li>Zrób pranie1
+                <div class="btn"> <button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div>
+            </li>
+            <li>Zrób pranie2
+                <div><button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div>
+            </li>
+            <li>Zrób pranie3
+                <div><button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div>
+            </li>
+            <li>Zrób pranie4
+                <div><button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div>
+            </li>
+        </ul>
+        <ul class="done-tasks">
+            <li>Zrób pranie5
+                <div><button class="redoTask">Do again</button><button class="removeTask">X</button></div>
+            </li>
+            <li>Zrób pranie6
+                <div><button class="redoTask">Do again</button><button class="removeTask">X</button></div>
+            </li>
+            <li>Zrób pranie7
+                <div><button class="redoTask">Do again</button><button class="removeTask">X</button></div>
+            </li>
+            <li>Zrób pranie8
+                <div><button class="redoTask">Do again</button><button class="removeTask">X</button></div>
+            </li>
+        </ul>
+    </div>
+    <script src="app2.js"></script>
+</body>
 
 </html>
