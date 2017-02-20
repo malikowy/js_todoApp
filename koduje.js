@@ -38,3 +38,7 @@ addBtn.addEventListener("click", function() {
     li.classList.add("comment");
     li.innerHTML = '<div>' + textarea.value + '</div>'; // umieści wartość textarea w divie
 }, false);
+
+
+// element listy z przyciskami wbudowanymi
+li.innerHTML = textarea.value + '<a class="doneTask">Done</a><a class="removeTask">X</a>'
