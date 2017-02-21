@@ -1,29 +1,28 @@
 .heading {
     max-width: 300px;
     margin: 0 40px;
+    button {
+    margin: 0 3px;
+}
 }
 
-.todo {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+.lists {
+    .container {
+        padding-left: 40px;
+    h2 {
+        display: inline-block;
+    }
     ul {
         width: 250px;
         list-style: none;
+        padding: 0;
     }
-}
-
-button {
-    margin: 0 3px;
-}
-
-li {
+    li {
     height: 30px;
     width: 250px;
     margin: 5px 0;
     background-color: gray;
     padding: 5px 0;
-
     div {
         float: right;
     }
@@ -32,24 +31,28 @@ li {
 li:hover {
     background-color: lightgray;
 }
-
-.doneTask:hover~li {
-    background-color: green !important;
+    button {
+        width: 30px;
+        height: 30px;
+        margin: 0 3px;
+    }
+    .removeTask {
+        background-color: red;
+    }
+    .todo-tasks {
+        .doneTask {
+        background-color: green;
+    }
+    }
+    .done-tasks {
+        .doneTask {
+        background-color: orange;
+    }
+    }
+    }
 }
 
-.removeTask:hover~li {
-    background-color: red !important;
-}
 
-.redoTask:hover~li {
-    background-color: orange !important;
-}
 
-.active {
-    background-color: purple;
-    color: red;
-}
-.removed {
-    background-color: black;
-    color: white;
-}
+
+

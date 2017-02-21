@@ -22,38 +22,18 @@
     <div class="heading">
         <h1>Add task to do:</h1>
         <form>
-            <input class="todo-text" type="text"><button type="button" class="addTask" type="button">Add</button></form>
+            <input id="item" type="text"><button id="add" type="button" type="button">Add</button></form>
         </form>
     </div>
-    <div class="todo">
-        <ul class="todo-tasks">
-            <li>Zrób pranie1
-                <div class="btn"> <button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div>
-            </li>
-            <li>Zrób pranie2
-                <div><button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div>
-            </li>
-            <li>Zrób pranie3
-                <div><button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div>
-            </li>
-            <li>Zrób pranie4
-                <div><button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div>
-            </li>
-        </ul>
-        <ul class="done-tasks">
-            <li>Zrób pranie5
-                <div><button class="redoTask">Do again</button><button class="removeTask">X</button></div>
-            </li>
-            <li>Zrób pranie6
-                <div><button class="redoTask">Do again</button><button class="removeTask">X</button></div>
-            </li>
-            <li>Zrób pranie7
-                <div><button class="redoTask">Do again</button><button class="removeTask">X</button></div>
-            </li>
-            <li>Zrób pranie8
-                <div><button class="redoTask">Do again</button><button class="removeTask">X</button></div>
-            </li>
-        </ul>
+    <div class="lists">
+        <div class="container">
+            <h2>To-do list</h2>
+            <ul class="todo-tasks" id="todo"></ul>
+        </div>
+        <div class="container">
+            <h2>Done list</h2>
+            <ul class="done-tasks" id="completed"></ul>
+        </div>
     </div>
     <script src="app2.js"></script>
 </body>

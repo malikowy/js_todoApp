@@ -1,34 +1,111 @@
-// podstawa działania
-let textTaskNew = document.querySelector(".todo-text");
-let btnTaskNew = document.querySelector('.addTask');
-// listy
-let liTodo = document.querySelector(".todo-tasks");
-let listItemsTodo = document.querySelector(".todo-tasks").getElementsByTagName("li");
-let liDone = document.querySelector(".done-tasks")
-let listItemsDone = document.querySelector(".done-tasks").getElementsByTagName("li");
-// funkcje zadań
-let btnDone = document.querySelectorAll('.doneTask');
-let btnRemove = document.querySelectorAll('.removeTask');
-let btnRedo = document.querySelectorAll('.redoTask');
+// przechowanie w pamięci jako tablica
+let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')) : {
+    todo: [],
+    completed: []
+};
 
-// Dodanie elementu do listy
-btnTaskNew.addEventListener("click", function() {
-    liTodo.innerHTML += '<li>' + textTaskNew.value + '<div class="btn"> <button type="button" class="doneTask">Done</button><button type="button" class="removeTask">X</button></div></li>';
-}, false);
+renderTodoList();
 
-// oznaczenie elementu jako aktywny po kliknięciu
-liTodo.addEventListener("click", selectItem);
+// pobranie treści
+document.getElementById('add').addEventListener('click', function() {
+    let value = document.getElementById('item').value;
+    if (value) {
+        addItem(value);
+    }
+});
 
-function selectItem(e) {
-    if (e.target.nodeName == "LI") {
-        for (i = 0; i < e.target.parentNode.children.length; i++) {
-            e.target.parentNode.children[i].classList.remove("active");
-        }
-        e.target.classList.add("active");
+document.getElementById('item').addEventListener('keydown', function(e) {
+    let value = this.value;
+    if (e.code === 'Enter' && value) {
+        addItem(value);
+    }
+});
+
+function addItem(value) {
+    addItemToDOM(value);
+    document.getElementById('item').value = '';
+
+    data.todo.push(value);
+    dataObjectUpdated();
+}
+
+function renderTodoList() {
+    if (!data.todo.length && !data.completed.length) return;
+
+    for (let i = 0; i < data.todo.length; i++) {
+        let value = data.todo[i];
+        addItemToDOM(value);
+    }
+
+    for (let j = 0; j < data.completed.length; j++) {
+        let value = data.completed[j];
+        addItemToDOM(value, true);
     }
 }
 
+// przechowanie w pamięci
+function dataObjectUpdated() {
+    localStorage.setItem('todoList', JSON.stringify(data));
+}
 
-// btnDone.addEventListener("click", doneTask);
-// btnRemove.addEventListener("click", removeTask);
-// btnRedo.addEventListener("click", redoTask);
+// usuniecie elementu
+function removeItem() {
+    let item = this.parentNode.parentNode;
+    let parent = item.parentNode;
+    let id = parent.id;
+    let value = item.innerText;
+
+    if (id === 'todo') {
+        data.todo.splice(data.todo.indexOf(value), 1);
+    } else {
+        data.completed.splice(data.completed.indexOf(value), 1);
+    }
+    dataObjectUpdated();
+
+    parent.removeChild(item);
+}
+// wykonanie elementu lub cofniecie wykonania
+function completeItem() {
+    let item = this.parentNode.parentNode;
+    let parent = item.parentNode;
+    let id = parent.id;
+    let value = item.innerText
+
+    if (id === 'todo') {
+        data.todo.splice(data.todo.indexOf(value), 1);
+        data.completed.push(value);
+    } else {
+        data.completed.splice(data.completed.indexOf(value), 1);
+        data.todo.push(value);
+    }
+    dataObjectUpdated();
+
+    // metoda if tylko w zmiennej
+    let target = (id === 'todo') ? document.getElementById('completed') : document.getElementById('todo');
+    parent.removeChild(item);
+    target.appendChild(item);
+}
+
+// dodanie treści jako element
+function addItemToDOM(text, completed) {
+    let list = (completed) ? document.getElementById('completed') : document.getElementById('todo');
+
+    let item = document.createElement('li');
+    item.innerText = text;
+
+    let buttons = document.createElement('div');
+    buttons.classList.add('btn');
+
+    let done = document.createElement('button');
+    done.classList.add('doneTask');
+    done.addEventListener("click", completeItem);
+
+    let remove = document.createElement('button');
+    remove.classList.add('removeTask');
+    remove.addEventListener("click", removeItem);
+
+    buttons.appendChild(done);
+    buttons.appendChild(remove);
+    item.appendChild(buttons);
+    list.appendChild(item);
+}
