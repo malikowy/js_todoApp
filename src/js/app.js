@@ -39,7 +39,7 @@ function renderTodoList() {
 
     for (let j = 0; j < data.completed.length; j++) {
         let value = data.completed[j];
-        addItemToDOM(value, true);
+        addItemToDOM(value,true);
     }
 }
 
@@ -69,7 +69,7 @@ function completeItem() {
     let item = this.parentNode.parentNode;
     let parent = item.parentNode;
     let id = parent.id;
-    let value = item.innerText
+    let value = item.innerText;
 
     if (id === 'todo') {
         data.todo.splice(data.todo.indexOf(value), 1);
